@@ -13,8 +13,8 @@ function init() {
 }
 
 function getSales() {
-//	var url = "http://gumball.wickedlysmart.com";
-	var url = "getJSON";
+//	var url = "http://gumball.wickedlysmart.com/html5/ch6/getJSON";
+	var url = "http://localhost:8080/html5/ch6/getJSON";
 	var request = new XMLHttpRequest();
 	request.open("GET", url);
 	request.onload = function() {
@@ -29,7 +29,14 @@ function getSales() {
 
 function updateSales(responseText) {
 	var salesDiv = document.getElementById("sales");
-	salesDiv.innerHTML = responseText;
+	var sales = JSON.parse(responseText);
+	for (var idx in sales) {
+		var sale = sales[idx];
+		var div = document.createElement("div");
+		div.setAttribute("class", "saleItem");
+		div.innerHTML = sale.name + "에서 검볼을 " + sale.sales + "개 팔았습니다.";
+		salesDiv.appendChild(div);
+	}
 }
 </script>
 <style>
