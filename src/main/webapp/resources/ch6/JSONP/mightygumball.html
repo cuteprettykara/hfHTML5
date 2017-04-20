@@ -11,7 +11,8 @@ function init() {
 }
 
 function handleRefresh() {
-	var url = "http://gumball.wickedlysmart.com?callback=updateSales";
+	var url = "http://gumball.wickedlysmart.com?callback=updateSales"
+			+ "&random=" + (new Date()).getTime();
 	
 	var newScriptElement = document.createElement("script");
 	newScriptElement.setAttribute("src", url);
