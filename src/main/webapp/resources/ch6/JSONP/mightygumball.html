@@ -4,6 +4,8 @@
 <title>마이티 검볼</title>
 <meta charset="utf-8">
 <script>
+var lastReportTime = 0;
+
 window.onload = init;
 
 function init() {
@@ -12,6 +14,7 @@ function init() {
 
 function handleRefresh() {
 	var url = "http://gumball.wickedlysmart.com?callback=updateSales"
+			+ "&lastreporttime=" + lastReportTime
 			+ "&random=" + (new Date()).getTime();
 	
 	var newScriptElement = document.createElement("script");
@@ -42,6 +45,12 @@ function updateSales(sales) {
 		div.setAttribute("class", "saleItem");
 		div.innerHTML = sale.name + "에서 검볼을 " + sale.sales + "개 팔았습니다.";
 		salesDiv.appendChild(div);
+	}
+	
+	//sales 배열을 보면 가장 최근의 보고서가 배열의 가장 마지막에 있습니다.
+	//따라서 이를 lastReportTime변수에 넣고 있습니다.
+	if (sales.length > 0) {
+		lastReportTime = sales[sales.length-1].time;
 	}
 }
 </script>
