@@ -14,7 +14,7 @@ function init() {
 
 function getSales() {
 //	var url = "http://gumball.wickedlysmart.com/html5/ch6/getJSON";
-	var url = "http://localhost:8080/html5/ch6/getJSON";
+	var url = "http://localhost:8080/ch6/getJSON";
 	var request = new XMLHttpRequest();
 	request.open("GET", url);
 	request.onload = function() {
